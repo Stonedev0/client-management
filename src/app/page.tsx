@@ -108,8 +108,10 @@ export default function Home() {
                 const message = `<pre>Dear ${client['Name'].split(' ')[0]},</pre><pre>${data.message}</pre>`;
                 sendData.append('message', message);
     
+                const PublicURL = window.location.href;
+                console.log(PublicURL);
                 try {
-                    const response = await fetch('/api/mail-send', {
+                    const response = await fetch(`${PublicURL}/api/mail-send`, {
                         method: 'post',
                         body: sendData,
                     });
