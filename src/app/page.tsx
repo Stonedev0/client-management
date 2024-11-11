@@ -101,11 +101,11 @@ export default function Home() {
         await Promise.all(selectedEmails.map(async (emailID) => {
             const client = jsonData.find((row) => row['ID'] === emailID);
             if (client) {
-                const email = client['Email Address'].replace(/,/g, '').split(' ')[0];
+                const email = client['Email Address'].replace(/,/g, '').split(' ')[0] ;
                 const sendData = new FormData();
                 sendData.append('email', email);
                 sendData.append('subject', data.subject);
-                const message = `<p>Dear ${client['Name'].split(' ')[0]},</p><p>${data.message}</p>`;
+                const message = `<pre>Dear ${client['Name'].split(' ')[0]},</pre><pre>${data.message}</pre>`;
                 sendData.append('message', message);
     
                 try {
