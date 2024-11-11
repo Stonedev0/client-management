@@ -113,7 +113,8 @@ export default function Home() {
                         body: sendData,
                     });
                     if (!response.ok) {
-                        throw new Error(`response status: ${response.status}`);
+                        const errorText = await response.text(); 
+                        throw new Error(`Server responded with status: ${response.status}, Message: ${errorText}`);
                     }
                     const responseData = await response.json();
                     console.log(responseData['message']);
